@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebAppID" version="3.1">
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>StuServlet</servlet-name>
+		<servlet-class>com.edo.servlet.StuServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AddStudent</display-name>
+		<servlet-name>AddStudent</servlet-name>
+		<servlet-class>com.edo.servlet.AddStudent</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>StudentsList</display-name>
+		<servlet-name>StudentsList</servlet-name>
+		<servlet-class>com.edo.servlet.StudentsList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>StuDelete</display-name>
+		<servlet-name>StuDelete</servlet-name>
+		<servlet-class>com.edo.servlet.StuDelete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StuServlet</servlet-name>
+		<url-pattern>/StuServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddStudent</servlet-name>
+		<url-pattern>/add.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentsList</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StuDelete</servlet-name>
+		<url-pattern>/studelete.do</url-pattern>
+	</servlet-mapping>
+</web-app>
