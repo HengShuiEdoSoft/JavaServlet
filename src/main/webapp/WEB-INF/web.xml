@@ -3,7 +3,22 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebAppID" version="3.1">
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Edo Spring MVC Web</display-name>
+	<servlet>
+		<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/</url-pattern>
+		<!-- 一定不能写为<url-pattern>/*</url-pattern>，这样的话，所有的请求将全部由Spring的DispatcherServlet来处理，显然是不合适的，jsp文件还是应该由Tomcat配置的JSP 
+			Servlet来处理。 -->
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>StuServlet</servlet-name>
 		<servlet-class>com.edo.servlet.StuServlet</servlet-class>
