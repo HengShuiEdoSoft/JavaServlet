@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/onepiece">后台</a>
+<a href="/onepiece">后台]</a>
 </body>
 </html>
