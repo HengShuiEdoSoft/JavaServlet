@@ -23,4 +23,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+   <build>
+  <defaultGoal>compile</defaultGoal>
+    
+  </build>
 </project>

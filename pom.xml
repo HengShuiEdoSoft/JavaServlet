@@ -14,4 +14,7 @@
   	<module>onepiece-service</module>
     <module>onepiece-web</module>
   </modules>
+   <build>
+  <defaultGoal>compile</defaultGoal>
+  </build>
 </project>
