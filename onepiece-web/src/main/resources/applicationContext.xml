@@ -72,7 +72,7 @@
 		<property name="transactionManager" ref="transactionManager" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.Gaokao.dao" />     <!-- value值为 dao层包位置 -->
+		<property name="basePackage" value="com.hsedo.onepiece.dao" />     <!-- value值为 dao层包位置 -->
 		<property name="sqlSessionFactoryBeanName"
 			value="sqlSessionFactory"></property>
 	</bean>
