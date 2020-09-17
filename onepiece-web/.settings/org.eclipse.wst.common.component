@@ -4,6 +4,15 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="onepiece-service-EdoJava2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onepiece-service/onepiece-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onepiece-dao-EdoJava2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onepiece-dao/onepiece-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="onepiece-iservice-EdoJava2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onepiece-iservice/onepiece-iservice">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="onepiece-pojo-EdoJava2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/onepiece-pojo/onepiece-pojo">
             <dependency-type>uses</dependency-type>
         </dependent-module>
