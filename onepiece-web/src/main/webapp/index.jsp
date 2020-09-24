@@ -14,7 +14,11 @@
 <br>
 <a href="/onepiece">后台</a>
 <p>床前明月光</p>
+<<<<<<< HEAD
 
  
+=======
+<a href="/upload.jsp">上传</a>
+>>>>>>> e1982f154dbc820befddef04139611b2c396415b
 </body>
 </html>

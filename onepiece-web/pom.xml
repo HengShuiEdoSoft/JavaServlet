@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<<<<<<< .mine
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0"
@@ -58,4 +59,65 @@
 		<defaultGoal>compile</defaultGoal>
 		<finalName>onepiece-web</finalName>
 	</build>
+=======
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hsedo.onepiece</groupId>
+		<artifactId>onepiece</artifactId>
+		<version>EdoJava2.0.0</version>
+	</parent>
+	<groupId>com.hsedo.onepiece</groupId>
+	<artifactId>onepiece-web</artifactId>
+	<version>EdoJava2.0.0</version>
+	<packaging>war</packaging>
+	<name>onepiece-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<defaultGoal>compile</defaultGoal>
+		<finalName>onepiece-web</finalName>
+	</build>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
 </project>
