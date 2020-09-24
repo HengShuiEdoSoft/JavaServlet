@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hsedo.onepiece</groupId>
-  <artifactId>onepiece</artifactId>
-  <version>EdoJava2.0.0</version>
-  <packaging>pom</packaging>
-  <name>onepiece</name>
-  <description>edo project</description>
-  <modules>
-  	<module>onepiece-dao</module>
-  	<module>onepiece-pojo</module>
-  	<module>onepiece-iservice</module>
-  	<module>onepiece-service</module>
-    <module>onepiece-web</module>
-  </modules>
-  
-  	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hsedo.onepiece</groupId>
+	<artifactId>onepiece</artifactId>
+	<version>EdoJava2.0.0</version>
+	<packaging>pom</packaging>
+	<name>onepiece</name>
+	<description>edo project</description>
+	<modules>
+		<module>onepiece-dao</module>
+		<module>onepiece-pojo</module>
+		<module>onepiece-iservice</module>
+		<module>onepiece-service</module>
+		<module>onepiece-web</module>
+		<module>onepiece-core</module>
+	</modules>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.2.9.RELEASE</spring.version>
 		<servlet-api.version>2.5</servlet-api.version>
@@ -194,16 +197,24 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+	<!-- 汉字转拼音 -->
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
 	</dependencies>
-  
-  
-  
-  
-  
-  
-  
-  
-   <build>
-  <defaultGoal>compile</defaultGoal>
-  </build>
+
+
+
+
+
+
+
+
+	<build>
+		<defaultGoal>compile</defaultGoal>
+	</build>
 </project>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsedo.onepiece.dao.Edo_Art_Common_Types_dao"><!-- namespace关联接口，增删改查，方法名和id对应 -->
+	<resultMap
+		type="com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo"
+		id="queryResultMap">
+
+		<result column="ID" property="ID" jdbcType="INTEGER" />
+		<result column="TypeName" property="TypeName"
+			jdbcType="VARCHAR" />
+		<result column="State" property="State" jdbcType="INTEGER" />
+		<result column="ParentID" property="ParentID"
+			jdbcType="INTEGER" />
+		<result column="SortID" property="SortID" jdbcType="INTEGER" />
+		<result column="Layer" property="Layer" jdbcType="INTEGER" />
+		<result column="Haschild" property="Haschild"
+			jdbcType="INTEGER" />
+		<result column="Path" property="Path" jdbcType="VARCHAR" />
+		<result column="TypeMaster" property="TypeMaster"
+			jdbcType="VARCHAR" />
+		<result column="Img" property="Img" jdbcType="VARCHAR" />
+		<result column="IsSystem" property="IsSystem"
+			jdbcType="INTEGER" />
+		<result column="PageType" property="PageType"
+			jdbcType="INTEGER" />
+		<result column="TempIndex" property="TempIndex"
+			jdbcType="VARCHAR" />
+		<result column="TempShow" property="TempShow"
+			jdbcType="VARCHAR" />
+		<result column="PageSize" property="PageSize"
+			jdbcType="INTEGER" />
+		<result column="Catalog" property="Catalog" jdbcType="VARCHAR" />
+
+
+
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID,TypeName,State,ParentID,SortID,Layer,Haschild,Path,TypeMaster,Img,IsSystem,PageType,TempIndex,TempShow,PageSize,Catalog
+	</sql>
+
+
+
+	<select id="getModel" resultMap="queryResultMap"
+		parameterType="Integer">
+		select
+		<include refid="Base_Column_List" />
+		from `edo_art_common_types` where ID=#{Id}
+	</select>
+
+	<select id="selectList" resultMap="queryResultMap"
+		parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from `edo_art_common_types` s
+	</select>
+
+		<select id="selectPID" resultMap="queryResultMap"
+		parameterType="INTEGER">
+		select
+		<include refid="Base_Column_List" />
+		from `edo_art_common_types` s
+		where s.ParentID= #{ParentID}
+	</select>
+
+
+	<insert id="add"
+		parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo" useGeneratedKeys="true" keyProperty="ID">
+		insert into `edo_art_common_types`
+		(TypeName,State,ParentID,SortID,Layer,Haschild,Path,TypeMaster,Img,IsSystem,PageType,TempIndex,TempShow,PageSize,Catalog) values
+		(#{TypeName},#{State},#{ParentID},#{SortID},#{Layer},#{Haschild},#{Path},#{TypeMaster},#{Img},#{IsSystem},#{PageType},#{TempIndex},#{TempShow},#{PageSize},#{Catalog});
+	</insert>
+
+	<update id="update"
+		parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo">
+		update `edo_art_common_types` s set
+		s.TypeName=#{TypeName} , s.State=#{State} , s.ParentID=#{ParentID} ,s.SortID=#{SortID} ,
+		s.Layer=#{Layer} , s.Haschild=#{Haschild} , s.Path=#{Path} ,
+		s.TypeMaster=#{TypeMaster} , s.Img=#{Img} ,s.IsSystem=#{IsSystem} ,s.PageType=#{PageType} ,
+		s.TempIndex=#{TempIndex} , s.TempShow=#{TempShow} ,
+		s.PageSize=#{PageSize} , s.Catalog=#{Catalog}
+		where s.ID=#{ID};
+	</update>
+
+
+	<update id="delete" parameterType="map">
+		delete from
+		`edo_art_common_types` s where s.ID=#{ID}
+	</update>
+</mapper>

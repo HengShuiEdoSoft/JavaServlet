@@ -39,6 +39,11 @@
 			<artifactId>onepiece-pojo</artifactId>
 			<version>EdoJava2.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.hsedo.onepiece</groupId>
+			<artifactId>onepiece-core</artifactId>
+			<version>EdoJava2.0.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>
