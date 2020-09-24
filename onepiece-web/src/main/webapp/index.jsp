@@ -9,5 +9,6 @@
 <body>
 <a href="/onepiece">后台</a>
 <p>床前明月光</p>
+<a href="/upload.jsp">上传</a>
 </body>
 </html>
