@@ -30,7 +30,8 @@
 				<div style="padding-bottom: 10px;">
 					<a class="layui-btn layuiadmin-btn-admin" href="typeAdd.jsp">添加</a>
 				</div>
-				<table class="layui-table">
+				<table id="tableList"></table>
+				<!-- <table class="layui-table">
 					<colgroup>
 						<col width="80">
 						<col>
@@ -65,24 +66,44 @@
 									class="layui-icon layui-icon-delete"></i>删除</a></td>
 						</tr>
 					</tbody>
-				</table>
+				</table> -->
 			</div>
 		</div>
 	</div>
 	<script src="/assets/layuiadmin/layui/layui.js"></script>
+	<script type="text/html" id="barDemo">
+<a class="layui-btn layui-btn-normal layui-btn-xs" href="typeEdit.jsp"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" layadmin-event="del" data-id=""><i class="layui-icon layui-icon-delete"></i>删除</a>
+</script>
 	<script>
 		layui.config({
 			base : '/assets/layuiadmin/' //静态资源所在路径
 		}).extend({
 			index : 'lib/index' //主入口模块
-		}).use([ 'index', 'set' ], function() {
-			var admin = layui.admin;
+		}).use([ 'index', 'set', 'table' ], function() {
+			var admin = layui.admin, $ = layui.$, table = layui.table;
 			admin.events.del = function(othis) {
 				console.log(othis.data("id"));
 				layer.confirm('删除后不可恢复,确定？', function(index) {
 					location.href = '';
 				});
 			};
+			/*   $.get("/Common_Type/listsql", function(res){
+				  console.log(res)
+				  });
+			   */
+			  //第一个实例
+			  table.render({
+			    elem: '#tableList'
+			    ,url: '/Common_Type/listsql' //数据接口			   
+			    ,cols: [[ //表头
+			       {field: 'iD', title: 'ID', width:80, sort: true, fixed: 'left'}
+			      ,{field: 'typeName', title: '分类名称'}
+			      ,{field: 'tempIndex', title: '目录', width:120}
+			      ,{field: 'sortID', title: '排序', width:80,align:'center'} 
+			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+			    ]]
+			  });		
 		});
 	</script>
 </body>

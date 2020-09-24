@@ -146,8 +146,10 @@
 									data : data,
 									dataType : 'json',
 									timeout : 3000,
-									success : function(d) {
-										console.log(d)
+									success : function(res) {										
+										layer.msg('添加成功', function () {
+										    window.location.href='/onepiece/news/typeList.jsp';
+										});
 									},
 									error : function(xhr, type) {
 										alert('Ajax error!')

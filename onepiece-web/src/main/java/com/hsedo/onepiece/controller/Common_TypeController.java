@@ -146,90 +146,90 @@ public class Common_TypeController {
 //	}
 
 	// 改
-	@RequestMapping("/editsql")
-	@ResponseBody
-	public Map typeedit(@RequestParam("ID") String ID, @RequestParam("TypeName") String TypeName,
-			@RequestParam("ParentID") String ParentID, @RequestParam("SortID") String SortID,
-			@RequestParam("Img") String Img, @RequestParam("TempList") String TempList,
-			@RequestParam("TempShow") String TempShow, @RequestParam("PageSize") String PageSize,
-			@RequestParam("TempIndex") String TempIndex) {
-
-		Map map = new HashMap();
-		map.put("msg", "fail");
-
-		if (TypeName == null || TypeName.length() == 0) {
-			map.put("msg", "TypeName不能为空");
-			return map;
-		}
-
-		int state = 0;
-
-		int parentID = 0;
-		try {
-			parentID = String_Convert.convertInteger(ParentID);
-		} catch (Exception e) {
-		}
-
-		int layer = 0;
-		//Map mappid = common_service.selectPID(parentID);
-		if (mappid == null) {
-		} else {
-			layer = (Integer) mappid.get("Layer") + 1;
-		}
-
-		int haschild = 0;
-		if (parentID == 0) {
-		} else {
-			haschild += 1;
-		}
-
-		int sortID = 0;
-		try {
-			sortID = String_Convert.convertInteger(SortID);
-		} catch (Exception e) {
-		}
-
-		int isSystem = 0;
-		int pageType = 0;
-		int catalog = 0;
-		int pageSize = 0;
-		try {
-			pageSize = String_Convert.convertInteger(PageSize);
-		} catch (Exception e) {
-		}
-
-		String Path = "";
-		String TypeMaster = "";
-		String Catalog = "";
-
-		Edo_Art_Common_Types_pojo ad = new Edo_Art_Common_Types_pojo();
-		ad.setTypeName(TypeName);
-		ad.setState(state);
-		ad.setParentID(parentID);
-		ad.setSortID(sortID);
-		ad.setLayer(layer);
-		ad.setHaschild(haschild);
-		ad.setPath(Path);
-		ad.setTypeMaster(TypeMaster);
-		ad.setImg(Img);
-		ad.setIsSystem(isSystem);
-		ad.setPageType(pageType);
-		ad.setTempIndex(TempIndex);
-		ad.setTempShow(TempShow);
-		ad.setPageSize(pageSize);
-		ad.setCatalog(Catalog);
-
-		int count = common_service.edit(ad);
-
-		if (count == 0) {
-			// 执行错误
-			map.put("msg", "未成功");
-		} else {
-			// 执行成功
-			map.put("msg", "更改成功");
-		}
-
-		return map;
-	}
+//	@RequestMapping("/editsql")
+//	@ResponseBody
+//	public Map typeedit(@RequestParam("ID") String ID, @RequestParam("TypeName") String TypeName,
+//			@RequestParam("ParentID") String ParentID, @RequestParam("SortID") String SortID,
+//			@RequestParam("Img") String Img, @RequestParam("TempList") String TempList,
+//			@RequestParam("TempShow") String TempShow, @RequestParam("PageSize") String PageSize,
+//			@RequestParam("TempIndex") String TempIndex) {
+//
+//		Map map = new HashMap();
+//		map.put("msg", "fail");
+//
+//		if (TypeName == null || TypeName.length() == 0) {
+//			map.put("msg", "TypeName不能为空");
+//			return map;
+//		}
+//
+//		int state = 0;
+//
+//		int parentID = 0;
+//		try {
+//			parentID = String_Convert.convertInteger(ParentID);
+//		} catch (Exception e) {
+//		}
+//
+//		int layer = 0;
+//		//Map mappid = common_service.selectPID(parentID);
+//		if (mappid == null) {
+//		} else {
+//			layer = (Integer) mappid.get("Layer") + 1;
+//		}
+//
+//		int haschild = 0;
+//		if (parentID == 0) {
+//		} else {
+//			haschild += 1;
+//		}
+//
+//		int sortID = 0;
+//		try {
+//			sortID = String_Convert.convertInteger(SortID);
+//		} catch (Exception e) {
+//		}
+//
+//		int isSystem = 0;
+//		int pageType = 0;
+//		int catalog = 0;
+//		int pageSize = 0;
+//		try {
+//			pageSize = String_Convert.convertInteger(PageSize);
+//		} catch (Exception e) {
+//		}
+//
+//		String Path = "";
+//		String TypeMaster = "";
+//		String Catalog = "";
+//
+//		Edo_Art_Common_Types_pojo ad = new Edo_Art_Common_Types_pojo();
+//		ad.setTypeName(TypeName);
+//		ad.setState(state);
+//		ad.setParentID(parentID);
+//		ad.setSortID(sortID);
+//		ad.setLayer(layer);
+//		ad.setHaschild(haschild);
+//		ad.setPath(Path);
+//		ad.setTypeMaster(TypeMaster);
+//		ad.setImg(Img);
+//		ad.setIsSystem(isSystem);
+//		ad.setPageType(pageType);
+//		ad.setTempIndex(TempIndex);
+//		ad.setTempShow(TempShow);
+//		ad.setPageSize(pageSize);
+//		ad.setCatalog(Catalog);
+//
+//		int count = common_service.edit(ad);
+//
+//		if (count == 0) {
+//			// 执行错误
+//			map.put("msg", "未成功");
+//		} else {
+//			// 执行成功
+//			map.put("msg", "更改成功");
+//		}
+//
+//		return map;
+//	}
 
 }
