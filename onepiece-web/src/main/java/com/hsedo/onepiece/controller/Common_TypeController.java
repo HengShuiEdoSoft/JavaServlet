@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hsedo.onepiece.core.util.cache.CacheManager;
 import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Art_Common_Types_iservice;
 import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
+
 
 @Controller
 @RequestMapping("/Common_Type")
