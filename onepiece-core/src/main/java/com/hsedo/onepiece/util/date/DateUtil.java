@@ -37,6 +37,24 @@ public class DateUtil {
         return date;
     }
     
+    
+    /**
+     * 获取系统当前时间
+     * @return  系统当前时间(年月日)
+     */
+    public static Date getDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = simpleDateFormat.format(new Date());
+       Date d=null;
+	try {
+		d = simpleDateFormat.parse(date);
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+        return d;
+
+    }
     /**
      * 获取系统当前时间
      * @return  系统当前时间(年月日)

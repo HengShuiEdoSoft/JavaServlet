@@ -9,7 +9,7 @@ import java.util.Date;
  * 类说明
  * 共同公共类
  */
-public class Edo_art_common_pojo {
+public class Edo_Art_Common_pojo {
 	
 	int	ID;
 	String	Title;
@@ -38,11 +38,11 @@ public class Edo_art_common_pojo {
 	String 	Remark;
 	String	FileUrl;
 	int ArtType;
-	public Edo_art_common_pojo() {
+	public Edo_Art_Common_pojo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Edo_art_common_pojo(int iD, String title, String titleSpell, String titleWeb, String keyWords,
+	public Edo_Art_Common_pojo(int iD, String title, String titleSpell, String titleWeb, String keyWords,
 			String description, String tempShow, String source, String body, String body1, String body2, int typeID,
 			int hit, int hot, String url, short isBest, short isNew, short isSlide, String author, String img,
 			Date cDate, int userID, int checkID, short artState, String remark, String fileUrl, int artType) {

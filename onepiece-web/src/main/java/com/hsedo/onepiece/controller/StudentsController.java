@@ -12,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hsedo.onepiece.iservice.Edo_art_common_iservice;
-import com.hsedo.onepiece.pojo.Edo_art_common_pojo;
+import com.hsedo.onepiece.iservice.Edo_Art_Common_iservice;
+import com.hsedo.onepiece.pojo.Edo_Art_Common_pojo;
 
 
 @Controller
@@ -25,13 +25,13 @@ public class StudentsController {
 	}
 
 	@Autowired
-	@Qualifier("Edo_art_common_service")
-	private Edo_art_common_iservice common_service;
+	@Qualifier("Edo_Art_Common_service")
+	private Edo_Art_Common_iservice common_service;
 
 	@RequestMapping("/listsql")
 	public ModelAndView StudentsList() {
 		Map map = new HashMap();
-		List<Edo_art_common_pojo> list = common_service.selectList(map);
+		List<Edo_Art_Common_pojo> list = common_service.selectList(map);
 		return new ModelAndView("list2", "stulist", list); 
 	}
 }

@@ -32,7 +32,7 @@ import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
 @RequestMapping("/Ad")
 public class Edo_AdvertsController {
 	
-		private static Logger logger = Logger.getLogger(CommonController.class);
+		private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 
 		public Edo_AdvertsController() {
 		}
@@ -231,6 +231,7 @@ public class Edo_AdvertsController {
 			
 
 			Edo_Adverts ad = new Edo_Adverts();
+			ad.setID(ID);
 			ad.setTypeID(typeID);
 			ad.setTitle(Title);
 			ad.setImg(Img);
@@ -245,7 +246,7 @@ public class Edo_AdvertsController {
 			ad.setData3(Data3);
 			ad.setData4(Data4);
 			ad.setData5(Data5);
-			int count = Ad_service.add(ad);
+			int count = Ad_service.edit(ad);
 
 			if (count == 0) {
 				// 执行错误

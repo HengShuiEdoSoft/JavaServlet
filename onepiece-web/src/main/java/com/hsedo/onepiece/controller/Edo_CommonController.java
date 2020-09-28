@@ -19,27 +19,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hsedo.onepiece.core.util.convert.String_Convert;
-import com.hsedo.onepiece.iservice.Edo_art_common_iservice;
-import com.hsedo.onepiece.pojo.Edo_art_common_pojo;
+import com.hsedo.onepiece.iservice.Edo_Art_Common_iservice;
+import com.hsedo.onepiece.pojo.Edo_Art_Common_pojo;
 import com.hsedo.onepiece.util.date.DateUtil;
 
 @Controller
 @RequestMapping("/common")
-public class CommonController {
+public class Edo_CommonController {
 
-	private static Logger logger = Logger.getLogger(CommonController.class);
+	private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 
-	public CommonController() {
+	public Edo_CommonController() {
 	}
 
 	@Autowired
-	@Qualifier("Edo_art_common_service")
-	private Edo_art_common_iservice common_service;
+	@Qualifier("Edo_Art_Common_service")
+	private Edo_Art_Common_iservice common_service;
 
 	@RequestMapping("/listsql")
 	public ModelAndView StudentsList() {
 		Map map = new HashMap();
-		List<Edo_art_common_pojo> list = common_service.selectList(map);
+		List<Edo_Art_Common_pojo> list = common_service.selectList(map);
 
 		return new ModelAndView("list", "stulist", list);
 	}
@@ -47,7 +47,7 @@ public class CommonController {
 	@RequestMapping("/add")
 	public ModelAndView articleadd() {
 		Map map = new HashMap();
-		List<Edo_art_common_pojo> list = common_service.selectList(map);
+		List<Edo_Art_Common_pojo> list = common_service.selectList(map);
 
 		return new ModelAndView("add", "stulist", list);
 	}
@@ -139,7 +139,7 @@ public class CommonController {
 		String Body2 = "";
 		String Remark = "";
 
-		Edo_art_common_pojo ad = new Edo_art_common_pojo();
+		Edo_Art_Common_pojo ad = new Edo_Art_Common_pojo();
 		ad.setTitle(Title);
 		ad.setTitleSpell(TitleSpell);
 		ad.setTitleWeb(TitleWeb);
@@ -210,7 +210,7 @@ public class CommonController {
 	// 改 返回jsp文件名
 	@RequestMapping("/edit")
 	public ModelAndView typeedit(int ID) {
-		Edo_art_common_pojo list = common_service.getModel(ID);
+		Edo_Art_Common_pojo list = common_service.getModel(ID);
 		return new ModelAndView("edit", "date", list);
 	}
 
@@ -301,7 +301,7 @@ public class CommonController {
 		String Body2 = "";
 		String Remark = "";
 
-		Edo_art_common_pojo ad = new Edo_art_common_pojo();
+		Edo_Art_Common_pojo ad = new Edo_Art_Common_pojo();
 		ad.setID(ID);
 		ad.setTitle(Title);
 		ad.setTitleSpell(TitleSpell);

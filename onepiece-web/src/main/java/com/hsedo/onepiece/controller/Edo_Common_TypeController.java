@@ -25,11 +25,11 @@ import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
 
 @Controller
 @RequestMapping("/Common_Type")
-public class Common_TypeController {
+public class Edo_Common_TypeController {
 
-	private static Logger logger = Logger.getLogger(CommonController.class);
+	private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 
-	public Common_TypeController() {
+	public Edo_Common_TypeController() {
 	}
 
 	@Autowired

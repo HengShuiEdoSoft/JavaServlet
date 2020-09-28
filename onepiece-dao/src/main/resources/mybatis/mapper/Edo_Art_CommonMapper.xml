@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hsedo.onepiece.dao.Edo_art_common_dao"><!-- namespace关联接口，增删改查，方法名和id对应 -->
-	<resultMap type="com.hsedo.onepiece.pojo.Edo_art_common_pojo" id="queryResultMap">
+<mapper namespace="com.hsedo.onepiece.dao.Edo_Art_Common_dao"><!-- namespace关联接口，增删改查，方法名和id对应 -->
+	<resultMap type="com.hsedo.onepiece.pojo.Edo_Art_Common_pojo" id="queryResultMap">
 
 	
 		<result column="ID" property="ID" jdbcType="INTEGER" />
@@ -55,7 +55,7 @@
 
 
 	 
-	<insert id="add" parameterType="com.hsedo.onepiece.pojo.Edo_art_common_pojo">
+	<insert id="add" parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_pojo">
 		insert into `edo_art_common` (Title,TitleSpell,TitleWeb,KeyWords,Description,TempShow,Source,Body,Body1,Body2,
 		TypeID,Hit,Url,IsBest,IsNew,IsSlide,Author,Img,CDate,UserID,UrCheckID,ArtState,Remark,FileUrl) values
 		(#{Title},#{TitleSpell},#{TitleWeb},#{KeyWords},#{Description},#{TempShow},#{Source},#{Body},#{Body1},#{Body2},
@@ -64,7 +64,7 @@
 		
 
 
-	<update id="update" parameterType="com.hsedo.onepiece.pojo.Edo_art_common_pojo">
+	<update id="update" parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_pojo">
 		update `edo_art_common` s  set s.Title=#{Title} , s.TitleSpell=#{TitleSpell} , s.TitleWeb=#{TitleWeb} , s.KeyWords=#{KeyWords} , s.Description=#{Description} , s.TempShow=#{TempShow} ,
 		s.Source=#{Source} , s.Body=#{Body} , s.Body1=#{Body1} , s.Body2=#{Body2} , s.TypeID=#{TypeID} , s.Hit=#{Hit} , s.Url=#{Url}, s.IsBest=#{IsBest}, s.IsNew=#{IsNew}, s.IsSlide=#{IsSlide}, 
 		s.Author=#{Author}, s.Img=#{Img}, s.CDate=#{CDate}, s.UserID=#{UserID}, s.CheckID=#{CheckID}, s.ArtState=#{ArtState}, s.Remark=#{Remark}, s.FileUrl=#{FileUrl}
