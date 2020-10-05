@@ -12,18 +12,18 @@
                 <div class="layui-card">
                     <div class="layui-card-header">编辑分类</div>
                     <div class="layui-card-body">
-                        <form class="layui-form" wid100 lay-filter="" action="" method="post">
+                        <form class="layui-form" wid100 lay-filter="form">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">分类名称</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="TypeName" value="" lay-verify="required" lay-verType="tips" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="typeName" value="" lay-verify="required" lay-verType="tips" autocomplete="off" class="layui-input" />
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">*</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">所属分类</label>
                                 <div class="layui-input-inline">
-                                    <select name="ParentID" lay-verify="">
+                                    <select name="parentID" lay-verify="">
                                         <option  value="0">顶层分类</option>                                       
                                     </select>
                                 </div>
@@ -31,13 +31,13 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">排序ID</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="SortID" value="" lay-verify="number" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="sortID" value="" lay-verify="number" autocomplete="off" class="layui-input" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">分类封面</label>
                                 <div class="layui-input-inline">
-                                    <input name="Img" id="Img" placeholder="图片地址" value="" class="layui-input" />
+                                    <input name="img" id="Img" placeholder="图片地址" value="" class="layui-input" />
                                 </div>
                                 <div class="layui-input-inline layui-btn-container" style="width: auto;">
                                     <button type="button" class="layui-btn layui-btn-primary" id="LAY_avatarUpload">
@@ -49,9 +49,9 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">展示类型</label>
                                 <div class="layui-input-block">
-                                    <input type="radio" name="PageType" value="0" title="列表"  lay-filter="ptype" />
-                                    <input type="radio" name="PageType" value="1" title="封面"  lay-filter="ptype" />
-                                    <input type="radio" name="PageType" value="2" title="单页"  lay-filter="ptype" />
+                                    <input type="radio" name="pageType" value="0" title="列表"  lay-filter="ptype" />
+                                    <input type="radio" name="pageType" value="1" title="封面"  lay-filter="ptype" />
+                                    <input type="radio" name="pageType" value="2" title="单页"  lay-filter="ptype" />
                                 </div>
                                 <div class="layui-input-block">
                                     <div class="layui-form-mid layui-word-aux">*列表模式返回数据列表，对应列表模板；封面模式返回空页面，对应封面模板；单页模式返回当前分类最新文章，对应详情模板</div>
@@ -60,37 +60,32 @@
                             <div class="layui-form-item"  id="tmp">
                                 <label class="layui-form-label">封面模板</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="TempIndex" value="" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="tempIndex" value="" autocomplete="off" class="layui-input" />
                                 </div>
                             </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">列表模板</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="TempList" value="" autocomplete="off" class="layui-input" />
-                                </div>
-                            </div>
+                       
                             <div class="layui-form-item">
                                 <label class="layui-form-label">详情模板</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="TempShow" value="" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="tempShow" value="" autocomplete="off" class="layui-input" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">每页数量</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="PageSize" value="" lay-verify="number" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="pageSize" value="" lay-verify="number" autocomplete="off" class="layui-input" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">目录设置</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="Catalog" value="" autocomplete="off" class="layui-input" />
+                                    <input type="text" name="catalog" value="" autocomplete="off" class="layui-input" />
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">*默认为名称首拼</div>
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit>确认保存</button>
+                                        <button class="layui-btn" lay-submit lay-filter="save">确认保存</button>
                                 </div>
                             </div>
                         </form>
@@ -101,39 +96,42 @@
     </div>
 	<script src="/assets/layuiadmin/layui/layui.js"></script>
 	<script>
-		layui.config({
-			base : '/assets/layuiadmin/' //静态资源所在路径
-		}).extend({
-            index: 'lib/index' //主入口模块
-        }).use(['index', 'set'], function () {
-            var $ = layui.$, upload = layui.upload, admin = layui.admin, form = layui.form;
-            var avatarSrc = $('#Img');
-            upload.render({
-                url: ''
-                , elem: '#LAY_avatarUpload'
-                , done: function (res) {
-                    if (res.code == 1) {
-                        avatarSrc.val(res.data);
-                    } else {
-                        layer.msg(res.msg);
-                    }
+    layui.config({
+        base: '/assets/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'set'], function () {
+        var $ = layui.$, upload = layui.upload, admin = layui.admin, form = layui.form;       
+        var ID=getQueryVariable("id");
+        $.ajax({
+            type: 'post',
+            url: '/Common_Type/iDlistsql', 
+            data:{ID},
+            dataType: 'json',
+            success: function (res) {
+            	console.log(res)
+                form.val('form',res.data)
+            }
+        })
+        form.on('submit(save)', function (data) {
+            var data = data.field;
+            $.ajax({
+                type: 'post',
+                url: "/Common_Type/editsql?ID="+ID,
+                data: data,
+                dataType: 'json',
+                timeout: 3000,
+                success: function (res) {
+                    layer.msg('更改成功', function () {
+                        window.location.href = '/onepiece/article/typeList.jsp';
+                    });
+                },
+                error: function (xhr, type) {
+                    alert('Ajax error!')
                 }
             });
-            //查看头像
-            admin.events.imgview = function (othis) {
-                var src = avatarSrc.val() + "?" + new Date();
-                layer.photos({
-                    photos: {
-                        "title": "查看封面" //相册标题
-                        , "data": [{
-                            "src": src //原图地址
-                        }]
-                    }
-                    , shade: 0.01
-                    , closeBtn: 1
-                    , anim: 5
-                });
-            };
+            return false;
+        });
             form.on('radio(ptype)', function (data) {
                 console.log(data.value);
                 var v = data.value;

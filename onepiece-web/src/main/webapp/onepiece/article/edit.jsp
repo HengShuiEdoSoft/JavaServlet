@@ -4,40 +4,6 @@
 <html>
 <head>
 <%@ include file="/onepiece/shared/header.jsp" %>
- <script type="text/javascript">
-        $(document).ready(function () {
-            $("#addbody").on("click", function () {
-                if (i == 0) {
-                    $("#bd1").removeClass("layui-hide");
-                    i++;
-                } else if (i==1) {
-                    $("#bd2").removeClass("layui-hide");
-                    i++;
-                }
-                if (i == 2) {
-                    $(this).addClass("layui-btn-disabled");
-                }
-                if (i > 0) {
-                    $("#delbody").removeClass("layui-btn-disabled");
-                }
-            });
-            $("#delbody").on("click", function () {
-                if (i == 2) {
-                    $("#bd2").addClass("layui-hide");
-                    i--;
-                } else if (i == 1) {
-                    $("#bd1").addClass("layui-hide");
-                    i--;
-                }
-                if (i == 0) {
-                    $(this).addClass("layui-btn-disabled");
-                }
-                if (i < 2) {
-                    $("#addbody").removeClass("layui-btn-disabled");
-                }
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="layui-fluid">
@@ -46,7 +12,7 @@
                 <div class="layui-card">
                     <div class="layui-card-header">编辑文章</div>
                     <div class="layui-card-body" pad15>
-                        <form class="layui-form" wid100 lay-filter="" action="" method="post">
+                                    <form class="layui-form" wid100 lay-filter="form">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">文章标题</label>
                                 <div class="layui-input-block">
@@ -159,28 +125,6 @@
                                     <div class="layui-form-mid layui-word-aux">字段名：Body</div>
                                 </div>
                             </div>
-                            <div class="layui-form-item layui-hide" id="bd1">
-                                <label class="layui-form-label">文章详情1</label>
-                                <div class="layui-input-block">
-                                    <textarea name="Body1" id="Body1" class="layui-textarea edoeditor"></textarea>
-                                    <div class="layui-form-mid layui-word-aux">字段名：Body1</div>
-                                </div>
-                            </div>
-                            <div class="layui-form-item layui-hide" id="bd2">
-                                <label class="layui-form-label">文章详情2</label>
-                                <div class="layui-input-block">
-                                    <textarea name="Body2" id="Body2" class="layui-textarea edoeditor"></textarea>
-                                    <div class="layui-form-mid layui-word-aux">字段名：Body2</div>
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block layui-btn-container" style="display:block;clear:both">
-                                    <div class="layui-btn-group">
-                                        <button type="button" id="addbody" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe654;</i></button>
-                                        <button type="button" id="delbody" class="layui-btn layui-btn-primary layui-btn-sm layui-btn-disabled"><i class="layui-icon">&#xe640;</i></button>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit>确认保存</button><button class="layui-btn" type="button" layadmin-event="back">返回上页</button>
@@ -199,50 +143,52 @@
         }).extend({
             index: 'lib/index' //主入口模块
         }).use(['index', 'set', 'laydate'], function () {
-            var laydate = layui.laydate,$= layui.$, upload = layui.upload, admin = layui.admin;
-            laydate.render({
-                elem: '#CDate',
-                type: 'datetime'
-            });
-            var imgSrc = $('#Img');
-            upload.render({
-                url: ''
-                , elem: '#LAY_ImgUpload'
-                , done: function (res) {
-                    if (res.code == 1) {
-                        imgSrc.val(res.data);
-                    } else {
-                        layer.msg(res.msg);
-                    }
+        	var $ = layui.$, upload = layui.upload, admin = layui.admin, form = layui.form;
+            $.ajax({
+                type: 'get',
+                url: '',
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res);
+                    form.val('form', {
+                        "Title": res.Title,
+                        "TitleWeb": res.TitleWeb,
+                        "KeyWords": res.KeyWords,
+                        "Description": res.Description,
+                        "Source": res.Source,
+                        "Url": res.Url,
+                        "Author": res.Author,
+                        "CDate": res.CDate,
+                        "TypeID": res.TypeID,
+                        "Img": res.Img,
+                        "FileUrl": res.FileUrl,
+                        "IsNew": res.IsNew,
+                        "Hot": res.Hot,
+                        "IsSlide": res.IsSlide,
+                        "TempShow": res.TempShow,
+                        "Body": res.Body
+                    });
+                }
+            }) 
+          form.on('submit(save)', function (data) {
+            var data = data.field;
+            $.ajax({
+                type: 'post',
+                url: "",
+                data: data,
+                dataType: 'json',
+                timeout: 3000,
+                success: function (res) {
+                    layer.msg('添加成功', function () {
+                        window.location.href='/onepiece/article/typeList.jsp';
+                    });
+                },
+                error: function (xhr, type) {
+                    alert('Ajax error!')
                 }
             });
-            upload.render({
-                url: ''
-                , elem: '#LAY_fileUpload'
-                , accept: 'file'
-                , exts:''
-                , done: function (res) {
-                    if (res.code == 1) {
-                        $('#FileUrl').val(res.data);
-                    } else {
-                        layer.msg(res.msg);
-                    }
-                }
-            });
-            admin.events.imgPreview = function (othis) {
-                 var src = imgSrc.val() + "?" + new Date();
-                layer.photos({
-                    photos: {
-                        "title": "查看封面" //相册标题
-                        , "data": [{
-                            "src": src //原图地址
-                        }]
-                    }
-                    , shade: 0.01
-                    , closeBtn: 1
-                    , anim: 5
-                });
-            };
+            return false;
+        });
         });
     </script>
 </body>

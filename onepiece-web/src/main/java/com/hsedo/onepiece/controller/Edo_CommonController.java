@@ -60,8 +60,9 @@ public class Edo_CommonController {
 			@RequestParam("Source") String Source, @RequestParam("Url") String Url,
 			@RequestParam("Author") String Author, @RequestParam("CDate") String CDate,
 			@RequestParam("TypeID") String TypeID, @RequestParam("Img") String Img,
-			@RequestParam("FileUrl") String FileUrl, @RequestParam("TempShow") String TempShow,
-			@RequestParam("Body") String Body) {
+			@RequestParam("FileUrl") String FileUrl,@RequestParam("IsNew") String IsNew,
+			@RequestParam("Hot") String Hot,@RequestParam("IsSlide") String IsSlide,
+			@RequestParam("TempShow") String TempShow,@RequestParam("Body") String Body) {
 
 		Map map = new HashMap();
 		map.put("msg", "fail");
@@ -113,21 +114,16 @@ public class Edo_CommonController {
 			e1.printStackTrace();
 		}
 		// 类型ID
-		int typeID = 0;
-		try {
-			typeID = String_Convert.convertInteger(TypeID);
-		} catch (Exception e) {
-		}
+		int typeID = String_Convert.convertInteger(TypeID);
+	
+		short isNew = String_Convert.convertShort(IsNew);
+		int hot = String_Convert.convertInteger(Hot);
+		short isSlide = String_Convert.convertShort(IsSlide);
 		// 设置点击量
 		int hit = 0;
 
-		// 设置热度
-		int hot = 0;
-
 		short isBest = 0;
-		short isNew = 0;
 
-		short isSlide = 0;
 		int userID = 0;
 		int checkID = 0;
 		// 国家ID
@@ -222,7 +218,8 @@ public class Edo_CommonController {
 			@RequestParam("Description") String Description, @RequestParam("Source") String Source,
 			@RequestParam("Url") String Url, @RequestParam("Author") String Author, @RequestParam("CDate") String CDate,
 			@RequestParam("TypeID") String TypeID, @RequestParam("Img") String Img,
-			@RequestParam("FileUrl") String FileUrl, @RequestParam("TempShow") String TempShow,
+			@RequestParam("FileUrl") String FileUrl,@RequestParam("IsNew") String IsNew,
+			@RequestParam("Hot") String Hot,@RequestParam("IsSlide") String IsSlide, @RequestParam("TempShow") String TempShow,
 			@RequestParam("Body") String Body) {
 
 		Map map = new HashMap();
@@ -275,21 +272,13 @@ public class Edo_CommonController {
 			e1.printStackTrace();
 		}
 		// 类型ID
-		int typeID = 0;
-		try {
-			typeID = String_Convert.convertInteger(TypeID);
-		} catch (Exception e) {
-		}
+		int typeID = String_Convert.convertInteger(TypeID);	
+		short isNew = String_Convert.convertShort(IsNew);
+		int hot = String_Convert.convertInteger(Hot);
+		short isSlide = String_Convert.convertShort(IsSlide);
 		// 设置点击量
 		int hit = 0;
-
-		// 设置热度
-		int hot = 0;
-
 		short isBest = 0;
-		short isNew = 0;
-
-		short isSlide = 0;
 		int userID = 0;
 		int checkID = 0;
 		// 国家ID

@@ -17,9 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Adverts_iservice;
-import com.hsedo.onepiece.iservice.Edo_Art_Common_Types_iservice;
 import com.hsedo.onepiece.pojo.Edo_Adverts;
-import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
 
 
 /**
@@ -41,12 +39,29 @@ public class Edo_AdvertsController {
 		@Qualifier("Edo_Adverts_service")
 		private Edo_Adverts_iservice Ad_service;
 
+		
+		@RequestMapping(value = "/iDlistsql", method = { RequestMethod.GET, RequestMethod.POST })
+		@ResponseBody
+		public Map StudentsList(@RequestParam("ID") String ID) {
+		int 	id = String_Convert.convertInteger(ID);
+			Map map = new HashMap();
+			Edo_Adverts list = Ad_service.getModel(id);
+			
+			map.put("code", 0);
+			map.put("data",list);
+			return map;
+		}
+		
+		
+		
+		
 		//广告查询
 		@RequestMapping("/listsql")
 		@ResponseBody
 		public Map StudentsList() {
 			Map map = new HashMap();
 			List<Edo_Adverts> list = Ad_service.selectList(map);
+			
 			map.put("code", 0);
 			map.put("count", list.size());
 			map.put("data",list);
@@ -59,9 +74,6 @@ public class Edo_AdvertsController {
 		@RequestMapping(value = "/deletesql")
 		@ResponseBody // @ResponseBody是可以往前端传递json格式的数据
 		public Map articledelete(HttpServletRequest req) {
-			Map<String, Object> result = new HashMap(); // 创建子键值对
-			result.put("msg", "fail"); // 定义msg , 控制返回的信息
-
 			Map map = new HashMap();
 			String ID = req.getParameter("ID");
 			map.put("ID", ID);
@@ -174,12 +186,12 @@ public class Edo_AdvertsController {
 		// 改
 		@RequestMapping("/editsql")
 		@ResponseBody
-		public Map typeedit(@RequestParam("ID") int ID, @RequestParam("TypeID") String TypeID, @RequestParam("Title") String Title,
-				@RequestParam("Img") String Img, @RequestParam("Url") String Url,
-				@RequestParam("Data1") String Data1, @RequestParam("Data2") String Data2,
-				@RequestParam("Data3") String Data3, @RequestParam("Data4") String Data4,
-				@RequestParam("Data5") String Data5, @RequestParam("StartTime") String StartTime,
-				@RequestParam("EndTime") String EndTime, @RequestParam("AdState") String AdState) {
+		public Map typeedit(@RequestParam("ID") String  ID, @RequestParam("typeID") String TypeID, @RequestParam("title") String Title,
+				@RequestParam("img") String Img, @RequestParam("url") String Url,
+				@RequestParam("data1") String Data1, @RequestParam("data2") String Data2,
+				@RequestParam("data3") String Data3, @RequestParam("data4") String Data4,
+				@RequestParam("data5") String Data5, @RequestParam("startTime") String StartTime,
+				@RequestParam("endTime") String EndTime, @RequestParam("adState") String AdState) {
 
 			Map map = new HashMap();
 			map.put("msg", "fail");
@@ -222,6 +234,7 @@ public class Edo_AdvertsController {
 			}else {
 				adState = String_Convert.convertInteger(AdState);
 			}
+			int iD = String_Convert.convertInteger(ID);
 			
 			//没写上传图片
 	
@@ -231,7 +244,7 @@ public class Edo_AdvertsController {
 			
 
 			Edo_Adverts ad = new Edo_Adverts();
-			ad.setID(ID);
+			ad.setID(iD);
 			ad.setTypeID(typeID);
 			ad.setTitle(Title);
 			ad.setImg(Img);
@@ -253,7 +266,7 @@ public class Edo_AdvertsController {
 				map.put("msg", "未成功");
 			} else {
 				// 执行成功
-				map.put("msg", "添加成功");
+				map.put("msg", "更改成功");
 			}
 
 			return map;

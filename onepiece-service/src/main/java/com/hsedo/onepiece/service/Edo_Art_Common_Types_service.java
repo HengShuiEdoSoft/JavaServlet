@@ -95,4 +95,9 @@ public class Edo_Art_Common_Types_service implements Edo_Art_Common_Types_iservi
 		return Dao.selectPID(m);
 	}
 
+	public List<Edo_Art_Common_Types_pojo> select(Edo_Art_Common_Types_pojo c) {
+		// TODO Auto-generated method stub
+		return Dao.select(c);
+	}
+
 }

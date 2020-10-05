@@ -22,7 +22,8 @@ public class Edo_Adverts_service  implements Edo_Adverts_iservice{
 
 		@Autowired
 		Edo_Adverts_dao Dao;
-
+		
+		
 		public Edo_Adverts getModel(int str) {
 			// TODO Auto-generated method stub
 			return Dao.getModel(str);

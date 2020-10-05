@@ -19,6 +19,7 @@ public class Edo_Art_Common_Types_pojo {
 	String	Img;
 	int	IsSystem;
 	int	PageType;
+	String TempList;
 	String	TempIndex;
 	String	TempShow;
 	int	PageSize;
@@ -27,9 +28,9 @@ public class Edo_Art_Common_Types_pojo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Edo_Art_Common_Types_pojo(int iD, String typeName, int state, int parentID, int sortID, int layer, int haschild,
-			String path, String typeMaster, String img, int isSystem, int pageType, String tempIndex, String tempShow,
-			int pageSize, String catalog) {
+	public Edo_Art_Common_Types_pojo(int iD, String typeName, int state, int parentID, int sortID, int layer,
+			int haschild, String path, String typeMaster, String img, int isSystem, int pageType, String tempList,
+			String tempIndex, String tempShow, int pageSize, String catalog) {
 		super();
 		ID = iD;
 		TypeName = typeName;
@@ -43,6 +44,7 @@ public class Edo_Art_Common_Types_pojo {
 		Img = img;
 		IsSystem = isSystem;
 		PageType = pageType;
+		TempList = tempList;
 		TempIndex = tempIndex;
 		TempShow = tempShow;
 		PageSize = pageSize;
@@ -120,6 +122,12 @@ public class Edo_Art_Common_Types_pojo {
 	public void setPageType(int pageType) {
 		PageType = pageType;
 	}
+	public String getTempList() {
+		return TempList;
+	}
+	public void setTempList(String tempList) {
+		TempList = tempList;
+	}
 	public String getTempIndex() {
 		return TempIndex;
 	}
@@ -144,7 +152,6 @@ public class Edo_Art_Common_Types_pojo {
 	public void setCatalog(String catalog) {
 		Catalog = catalog;
 	}
-	
 	
 	
 }

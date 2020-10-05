@@ -94,10 +94,10 @@
 								class="layui-icon layui-icon-list"></i><cite>内容系统</cite></a>
 						<dl class="layui-nav-child">
 								<dd>
-									<a lay-href="news/list.jsp">文章列表</a>
+									<a lay-href="article/list.jsp">文章列表</a>
 								</dd>
 								<dd>
-									<a lay-href="news/typeList.jsp">分类管理</a>
+									<a lay-href="article/typeList.jsp">分类管理</a>
 								</dd>
 							</dl></li>
 						<li data-name="item20" class="layui-nav-item"><a
@@ -131,9 +131,6 @@
 							href="javascript:;" lay-tips="友情链接" lay-direction="2"><i
 								class="layui-icon layui-icon-link"></i><cite>友情链接</cite></a>
 						<dl class="layui-nav-child">
-								<dd>
-									<a lay-href="links/typeList.jsp">链接类型</a>
-								</dd>
 								<dd>
 									<a lay-href="links/list.jsp">链接管理</a>
 								</dd>

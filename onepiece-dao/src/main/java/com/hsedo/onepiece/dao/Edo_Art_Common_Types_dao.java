@@ -19,4 +19,5 @@ public interface Edo_Art_Common_Types_dao extends BaseDao<Edo_Art_Common_Types_p
 
 	 //按照PID查找
 	List<Edo_Art_Common_Types_pojo> selectPID(int m);
+	List<Edo_Art_Common_Types_pojo> select(Edo_Art_Common_Types_pojo c);
 }

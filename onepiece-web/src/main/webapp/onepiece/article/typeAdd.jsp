@@ -51,13 +51,7 @@
                                 </div> -->
 							</div>
 
-							<div class="layui-form-item">
-								<label class="layui-form-label">列表模板</label>
-								<div class="layui-input-inline">
-									<input type="text" name="TempList" value="" autocomplete="off"
-										class="layui-input" />
-								</div>
-							</div>
+							
 							<div class="layui-form-item">
 								<label class="layui-form-label">详情模板</label>
 								<div class="layui-input-inline">
@@ -148,7 +142,7 @@
 									timeout : 3000,
 									success : function(res) {										
 										layer.msg('添加成功', function () {
-										    window.location.href='/onepiece/news/typeList.jsp';
+										    window.location.href='/onepiece/article/typeList.jsp';
 										});
 									},
 									error : function(xhr, type) {

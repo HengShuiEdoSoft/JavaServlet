@@ -63,8 +63,7 @@
 	</update>
 
 
-	<update id="delete" parameterType="map">
-		delete from
-		`edo_adverts` s where s.ID=#{ID}
-	</update>
+	<delete id="delete" parameterType="map">
+		delete from `edo_adverts`  where ID=#{ID}
+	</delete>
 </mapper>
