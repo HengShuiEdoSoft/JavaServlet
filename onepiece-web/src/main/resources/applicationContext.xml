@@ -21,6 +21,7 @@
 		location="classpath:/application.properties" />
 
 
+
 	<!--数据库链接 -->
 	<bean id="dataSource"
 		class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
@@ -76,4 +77,5 @@
 		<property name="sqlSessionFactoryBeanName"
 			value="sqlSessionFactory"></property>
 	</bean>
+	
 </beans>

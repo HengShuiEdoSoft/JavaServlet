@@ -31,6 +31,16 @@
   	<servlet-name>UploadServlet</servlet-name>
   	<url-pattern>/UploadServlet</url-pattern>
   </servlet-mapping>
+     <servlet>
+  	<servlet-name>Edo_LogInServlet</servlet-name>
+  	<servlet-class>com.hsedo.onepiece.web.servlet.Edo_LogInServlet</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+  	<servlet-name>Edo_LogInServlet</servlet-name>
+  	<url-pattern>/Edo_LogInServlet</url-pattern>
+  </servlet-mapping>
+
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.hsedo.onepiece.dao.Edo_Adverts_dao;
 import com.hsedo.onepiece.iservice.Edo_Adverts_iservice;
 import com.hsedo.onepiece.pojo.Edo_Adverts;
@@ -28,9 +29,11 @@ public class Edo_Adverts_service  implements Edo_Adverts_iservice{
 			// TODO Auto-generated method stub
 			return Dao.getModel(str);
 		}
-
+	
 		public List<Edo_Adverts> selectList(Map map) {
 			// TODO Auto-generated method stub
+			// pageNum  页码 ,  pageSize 每页显示数量
+			PageHelper.startPage(12, 10);
 			return Dao.selectList(map);
 		}
 

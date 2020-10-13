@@ -62,7 +62,7 @@
 							</dd>
 							<hr />
 							<dd style="text-align: center;">
-								<a href="#">退出</a>
+								<a href="/index.jsp">退出</a>
 							</dd>
 						</dl></li>
 					<li class="layui-nav-item layui-hide-xs" lay-unselect><a
