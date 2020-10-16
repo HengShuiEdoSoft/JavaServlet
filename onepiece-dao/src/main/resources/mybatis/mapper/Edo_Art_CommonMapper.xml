@@ -30,13 +30,30 @@
 		<result column="ArtState" property="ArtState"	jdbcType="INTEGER" />
 		<result column="Remark" property="Remark" jdbcType="VARCHAR" />
 		<result column="FileUrl" property="FileUrl" jdbcType="VARCHAR" />
-		
+		<result column="ArtType" property="ArtType" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		ID,Title,TitleSpell,TitleWeb,KeyWords,Description,TempShow,Source,Body,Body1,Body2,TypeID,Hit,Hot,Url,IsBest,IsNew,IsSlide,
-		Author,Img,CDate,UserID,CheckID,ArtState,Remark,FileUrl
+		Author,Img,CDate,UserID,CheckID,ArtState,Remark,FileUrl,ArtType
 	</sql>
 	
+		<select id="selectList1" resultMap="queryResultMap"
+		parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_pojo">
+		select
+		<include refid="Base_Column_List" />
+		from `edo_art_common` s   
+		<where>
+		    <if test="Title != null and Title != ''">AND s.Title like concat ('%',#{Title},'%')</if>
+			<if test="ArtState != null and ArtState != ''">AND s.ArtState like concat ('%',#{ArtState},'%')</if>
+			<if test="TypeID > 0 " >   AND s.TypeID = #{TypeID}</if>
+			<if test="CDate > 0" >   AND s.CDate = #{CDate}</if>
+		</where>
+	</select>
+	
+	<!-- 批量删除 -->
+		<update id="batchdelete" parameterType="String">
+		delete from `edo_art_common` s where s.ID in (#{StrID})
+	</update>
 	
 	
 	<select id="getModel" resultMap="queryResultMap"
@@ -51,15 +68,13 @@
 		select
 		<include refid="Base_Column_List" />
 		from `edo_art_common` s
-	</select>	
+	</select>
 
-
-	 
 	<insert id="add" parameterType="com.hsedo.onepiece.pojo.Edo_Art_Common_pojo">
 		insert into `edo_art_common` (Title,TitleSpell,TitleWeb,KeyWords,Description,TempShow,Source,Body,Body1,Body2,
-		TypeID,Hit,Url,IsBest,IsNew,IsSlide,Author,Img,CDate,UserID,UrCheckID,ArtState,Remark,FileUrl) values
+		TypeID,Hit,Hot,Url,IsBest,IsNew,IsSlide,Author,Img,CDate,UserID,CheckID,ArtState,Remark,FileUrl,ArtType) values
 		(#{Title},#{TitleSpell},#{TitleWeb},#{KeyWords},#{Description},#{TempShow},#{Source},#{Body},#{Body1},#{Body2},
-		#{TypeID},#{Hit},#{Url},#{IsBest},#{IsNew},#{IsSlide},#{Author},#{Img},#{CDate},#{UserID},#{CheckID},#{ArtState},#{Remark},#{FileUrl});
+		#{TypeID},#{Hit},#{Hot},#{Url},#{IsBest},#{IsNew},#{IsSlide},#{Author},#{Img},#{CDate},#{UserID},#{CheckID},#{ArtState},#{Remark},#{FileUrl},#{ArtType});
 	</insert>
 		
 

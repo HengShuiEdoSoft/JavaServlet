@@ -112,8 +112,7 @@
 								var src = avatarSrc.val() + "?" + new Date();
 								layer.photos({
 									photos : {
-										"title" : "查看封面" //相册标题
-										,
+										"title" : "查看封面" //相册标题,
 										"data" : [ {
 											"src" : src
 										//原图地址
@@ -140,11 +139,15 @@
 									data : data,
 									dataType : 'json',
 									timeout : 3000,
-									success : function(res) {										
-										layer.msg('添加成功', function () {
-										    window.location.href='/onepiece/article/typeList.jsp';
-										});
-									},
+									success : function(res) {
+											if(res.code===0){
+												layer.msg('添加成功', function () {
+												    window.location.href='/onepiece/article/typeList.jsp';
+												});
+											}else{
+												layer.msg(res.msg)
+											}			
+										},
 									error : function(xhr, type) {
 										alert('Ajax error!')
 									}

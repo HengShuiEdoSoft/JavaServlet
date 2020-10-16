@@ -1,6 +1,7 @@
 package com.hsedo.onepiece.controller;
 
-import java.text.ParseException;
+
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Art_Common_iservice;
+import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
 import com.hsedo.onepiece.pojo.Edo_Art_Common_pojo;
 import com.hsedo.onepiece.core.util.date.DateUtil;
 
@@ -36,21 +38,84 @@ public class Edo_CommonController {
 	@Qualifier("Edo_Art_Common_service")
 	private Edo_Art_Common_iservice common_service;
 
+	
+	//批量删除
+	@RequestMapping("/batchdelete")
+	@ResponseBody
+	public Map batchdelete(@RequestParam("ID") String StrID) {
+		
+		Map map = new HashMap();
+		int count = common_service.batchdelete(StrID);
+		if (count == 0) {
+			// 执行错误
+			map.put("msg", "删除未成功");
+		} else {
+			// 执行成功
+			map.put("msg", "删除成功");
+		}
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//模糊查询
+	@RequestMapping("/listlike")
+	@ResponseBody
+	public Map StudentsList1(@RequestParam("Title") String Title,@RequestParam("TypeID") String TypeID,
+			@RequestParam("ArtState") String ArtState, @RequestParam("CDate") String CDate) {
+		Map map = new HashMap();
+		Edo_Art_Common_pojo ad = new Edo_Art_Common_pojo();
+		int typeID=String_Convert.convertInteger(TypeID);
+		short artState=String_Convert.convertShort(ArtState);
+		Date cDate=DateUtil.StringToDate(CDate);
+		ad.setTitle(Title);
+		ad.setTypeID(typeID);
+		ad.setArtState(artState);
+		ad.setCDate(cDate);
+		List<Edo_Art_Common_pojo> list = common_service.selectList1(ad);
+		map.put("code", 0);
+		map.put("count", list.size());
+		map.put("data",list);
+		return map;
+	}
+	
+	
+	
+	@RequestMapping(value = "/iDlistsql", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public Map StudentsList(@RequestParam("ID") String ID) {
+	int 	id = String_Convert.convertInteger(ID);
+		Map map = new HashMap();
+		Edo_Art_Common_pojo list = common_service.getModel(id);
+		
+		map.put("code", 0);
+		map.put("data",list);
+		return map;
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/listsql")
-	public ModelAndView StudentsList() {
+	@ResponseBody
+	public Map StudentsList() {
 		Map map = new HashMap();
 		List<Edo_Art_Common_pojo> list = common_service.selectList(map);
-
-		return new ModelAndView("list", "stulist", list);
+		map.put("code", 0);
+		map.put("count", list.size());
+		map.put("data", list);
+		return map;
 	}
+		
 
-	@RequestMapping("/add")
-	public ModelAndView articleadd() {
-		Map map = new HashMap();
-		List<Edo_Art_Common_pojo> list = common_service.selectList(map);
 
-		return new ModelAndView("add", "stulist", list);
-	}
 
 	// 增
 	@RequestMapping(value = "/addsql", method = { RequestMethod.GET, RequestMethod.POST })
@@ -65,10 +130,12 @@ public class Edo_CommonController {
 			@RequestParam("TempShow") String TempShow,@RequestParam("Body") String Body) {
 
 		Map map = new HashMap();
+		map.put("code", 0);
 		map.put("msg", "fail");
 
 		String TitleSpell = null;
 		if (Title == null || Title.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "Title不能为空");
 			return map;
 		} else {
@@ -76,43 +143,44 @@ public class Edo_CommonController {
 		}
 
 		if (TitleWeb == null || TitleWeb.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "TitleWeb不能为空");
 			return map;
 		}
 
 		if (KeyWords == null || KeyWords.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "关键字不能为空");
 			return map;
 		}
 
 		if (Description == null || Description.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "描述不能为空");
 			return map;
 		}
 
 		if (Source == null || Source.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "原地址不能为空");
 			return map;
 		}
 
 		if (Body == null || Body.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "内容不能为空");
 			return map;
 		}
 
 		if (Author == null || Author.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "作者不能为空");
 			return map;
 		}
 
-		String date = DateUtil.getCurrentDateHalf();
-		Date date1 = null;
-		try {
-			date1 = DateUtil.StringToDate(date);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
+		Date date1 =  DateUtil.getDate();
+		
 		// 类型ID
 		int typeID = String_Convert.convertInteger(TypeID);
 	
@@ -126,7 +194,6 @@ public class Edo_CommonController {
 
 		int userID = 0;
 		int checkID = 0;
-		// 国家ID
 		short artState = 0;
 		// 分页
 		int artType = 1;
@@ -191,7 +258,6 @@ public class Edo_CommonController {
 		int count = common_service.delete(map);
 
 		Map mapweb = new HashMap();
-		map.put("msg", "fail");
 		if (count == 0) {
 			// 执行错误
 			mapweb.put("msg", "删除未成功");
@@ -213,20 +279,21 @@ public class Edo_CommonController {
 	// 改
 	@RequestMapping("/editsql")
 	@ResponseBody
-	public Map typeedit(@RequestParam("ID") int ID, @RequestParam("Title") String Title,
-			@RequestParam("TitleWeb") String TitleWeb, @RequestParam("KeyWords") String KeyWords,
-			@RequestParam("Description") String Description, @RequestParam("Source") String Source,
-			@RequestParam("Url") String Url, @RequestParam("Author") String Author, @RequestParam("CDate") String CDate,
-			@RequestParam("TypeID") String TypeID, @RequestParam("Img") String Img,
-			@RequestParam("FileUrl") String FileUrl,@RequestParam("IsNew") String IsNew,
-			@RequestParam("Hot") String Hot,@RequestParam("IsSlide") String IsSlide, @RequestParam("TempShow") String TempShow,
-			@RequestParam("Body") String Body) {
+	public Map typeedit(@RequestParam("ID") int ID, @RequestParam("title") String Title,
+			@RequestParam("titleWeb") String TitleWeb, @RequestParam("keyWords") String KeyWords,
+			@RequestParam("description") String Description, @RequestParam("source") String Source,
+			@RequestParam("url") String Url, @RequestParam("author") String Author, @RequestParam("cDate") String CDate,
+			@RequestParam("typeID") String TypeID, @RequestParam("img") String Img,
+			@RequestParam("fileUrl") String FileUrl,@RequestParam("isNew") String IsNew,
+			@RequestParam("hot") String Hot,@RequestParam("isSlide") String IsSlide, @RequestParam("tempShow") String TempShow,
+			@RequestParam("body") String Body) {
 
 		Map map = new HashMap();
 		map.put("msg", "fail");
-
+		map.put("code",0);
 		String TitleSpell = null;
 		if (Title == null || Title.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "Title不能为空");
 			return map;
 		} else {
@@ -234,43 +301,43 @@ public class Edo_CommonController {
 		}
 
 		if (TitleWeb == null || TitleWeb.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "TitleWeb不能为空");
 			return map;
 		}
 
 		if (KeyWords == null || KeyWords.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "关键字不能为空");
 			return map;
 		}
 
 		if (Description == null || Description.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "描述不能为空");
 			return map;
 		}
 
 		if (Source == null || Source.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "原地址不能为空");
 			return map;
 		}
 
 		if (Body == null || Body.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "内容不能为空");
 			return map;
 		}
 
 		if (Author == null || Author.length() == 0) {
+			map.put("code",1);
 			map.put("msg", "作者不能为空");
 			return map;
 		}
-
-		String date = DateUtil.getCurrentDateHalf();
-		Date date1 = null;
-		try {
-			date1 = DateUtil.StringToDate(date);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	
+		Date date1 = date1 =  DateUtil.getDate();
+	
 		// 类型ID
 		int typeID = String_Convert.convertInteger(TypeID);	
 		short isNew = String_Convert.convertShort(IsNew);
@@ -281,7 +348,6 @@ public class Edo_CommonController {
 		short isBest = 0;
 		int userID = 0;
 		int checkID = 0;
-		// 国家ID
 		short artState = 0;
 		// 分页
 		int artType = 1;
@@ -326,7 +392,7 @@ public class Edo_CommonController {
 			map.put("msg", "未成功");
 		} else {
 			// 执行成功
-			map.put("msg", "添加成功");
+			map.put("msg", "更改成功");
 		}
 
 		return map;

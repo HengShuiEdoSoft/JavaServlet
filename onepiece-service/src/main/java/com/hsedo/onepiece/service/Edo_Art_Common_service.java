@@ -43,4 +43,18 @@ public class Edo_Art_Common_service implements Edo_Art_Common_iservice {
 		// TODO Auto-generated method stub
 		return Dao.delete(map);
 	}
+
+
+	//模糊(搜索)查询
+	public List<Edo_Art_Common_pojo> selectList1(Edo_Art_Common_pojo m) {
+		// TODO Auto-generated method stub
+		return Dao.selectList1(m);
+	}
+
+
+
+	public int batchdelete(String StrID) {
+		// TODO Auto-generated method stub
+		return Dao.batchdelete(StrID);
+	}
 }

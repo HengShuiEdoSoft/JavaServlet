@@ -22,6 +22,7 @@ import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Art_Common_Types_iservice;
 import com.hsedo.onepiece.pojo.Edo_Adverts;
 import com.hsedo.onepiece.pojo.Edo_Art_Common_Types_pojo;
+import com.hsedo.onepiece.pojo.Edo_Dd_Admin;
 
 
 /**
@@ -86,6 +87,9 @@ public class Edo_Common_TypeController {
 	}
 
 	
+	
+
+	
 
 //	@RequestMapping("/add")
 //	public ModelAndView articleadd() {
@@ -108,8 +112,9 @@ public class Edo_Common_TypeController {
 		
 		Map map = new HashMap();
 		map.put("msg", "fail");
-
+		map.put("code", 0);
 		if (TypeName == null || TypeName.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "TypeName不能为空");
 			return map;
 		}
@@ -198,8 +203,9 @@ public class Edo_Common_TypeController {
 		
 		Map map = new HashMap();
 		map.put("msg", "fail");
-
+		map.put("code", 0);
 		if (TypeName == null || TypeName.length() == 0) {
+			map.put("code", 1);
 			map.put("msg", "TypeName不能为空");
 			return map;
 		}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hsedo.onepiece.basecontroller.Edo_BaseController;
 import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Adverts_iservice;
 import com.hsedo.onepiece.pojo.Edo_Adverts;
@@ -28,7 +29,7 @@ import com.hsedo.onepiece.pojo.Edo_Adverts;
  */
 @Controller
 @RequestMapping("/Ad")
-public class Edo_AdvertsController {
+public class Edo_AdvertsController extends Edo_BaseController {
 	
 		private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 
@@ -102,14 +103,15 @@ public class Edo_AdvertsController {
 				@RequestParam("Data1") String Data1, @RequestParam("Data2") String Data2,
 				@RequestParam("Data3") String Data3, @RequestParam("Data4") String Data4,
 				@RequestParam("Data5") String Data5, @RequestParam("StartTime") String StartTime,
-				@RequestParam("EndTime") String EndTime, @RequestParam("AdState") String AdState) {
+				@RequestParam("EndTime") String EndTime, @RequestParam("AdState") String  AdState) {
 
 			Map map = new HashMap();
 			map.put("msg", "fail");
-
+			map.put("code", 0);
 			
 			int typeID=0;
 			if (TypeID == null || TypeID.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "所属分类不能为空");
 				return map;
 			}else {
@@ -118,12 +120,14 @@ public class Edo_AdvertsController {
 
 		
 			if (Title == null || Title.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "Title不能为空");
 				return map;
 			}
 			
 			Date startTime = null;
 			if (StartTime == null || StartTime.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "开始时间不能为空");
 				return map;
 			}else {
@@ -132,6 +136,7 @@ public class Edo_AdvertsController {
 			
 			Date endTime = null;
 			if (EndTime == null || EndTime.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "结束时间不能为空");
 				return map;
 			}else {
@@ -140,6 +145,7 @@ public class Edo_AdvertsController {
 			
 			int	adState=0;
 			if (AdState == null || AdState.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "状态不能为空");
 				return map;
 			}else {
@@ -195,10 +201,11 @@ public class Edo_AdvertsController {
 
 			Map map = new HashMap();
 			map.put("msg", "fail");
-
+			map.put("code", 0);
 			
 			int typeID=0;
 			if (TypeID == null || TypeID.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "所属分类不能为空");
 				return map;
 			}else {
@@ -207,12 +214,14 @@ public class Edo_AdvertsController {
 
 		
 			if (Title == null || Title.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "Title不能为空");
 				return map;
 			}
 			
 			Date startTime = null;
 			if (StartTime == null || StartTime.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "开始时间不能为空");
 				return map;
 			}else {
@@ -221,6 +230,7 @@ public class Edo_AdvertsController {
 			
 			Date endTime = null;
 			if (EndTime == null || EndTime.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "结束时间不能为空");
 				return map;
 			}else {
@@ -229,6 +239,7 @@ public class Edo_AdvertsController {
 			
 			int	adState=0;
 			if (AdState == null || AdState.length() == 0) {
+				map.put("code", 1);
 				map.put("msg", "状态不能为空");
 				return map;
 			}else {
