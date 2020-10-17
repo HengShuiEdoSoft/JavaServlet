@@ -29,7 +29,7 @@ import com.hsedo.onepiece.pojo.Edo_Adverts;
  */
 @Controller
 @RequestMapping("/Ad")
-public class Edo_AdvertsController extends Edo_BaseController {
+public class Edo_AdvertsController   {
 	
 		private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 
