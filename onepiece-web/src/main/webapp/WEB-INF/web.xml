@@ -53,9 +53,29 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
+	<filter>
+		<description>
+		</description>	
+		<display-name>Edo_BaseFilter</display-name>
+		<filter-name>Edo_BaseFilter</filter-name>
+		<filter-class>com.hsedo.onepiece.web.servlet.Edo_BaseFilter</filter-class>
+		    <init-param>
+           <param-name>noLoginPaths</param-name>
+             <param-value>index.jsp;forget.jsp;register.jsp;LoginServlet</param-value> 
+         </init-param>
+         <init-param>
+             <param-name>charset</param-name> 
+             <param-value>UTF-8</param-value>
+         </init-param>
+		
+	</filter>
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Edo_BaseFilter</filter-name>
+		<url-pattern>/onepiece/*</url-pattern>
 	</filter-mapping>
 
 	<session-config>

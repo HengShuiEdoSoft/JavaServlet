@@ -177,7 +177,7 @@
 											<a lay-href="admin/editUserInfo.jsp">基本资料</a>
 										</dd>
 										<dd>
-											<a lay-href="admin/editPwd.jsp">修改密码</a>
+											<a lay-href="/forget.jsp">修改密码</a>
 										</dd>
 										<dd>
 											<a lay-href="admin/logsList.jsp">操作记录</a>

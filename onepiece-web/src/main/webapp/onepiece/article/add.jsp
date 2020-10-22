@@ -4,6 +4,15 @@
 <html>
 <head>
 <%@ include file="/onepiece/shared/header.jsp"%>
+
+    <!-- 加载编辑器的容器 -->
+    <script id="container" name="content" type="text/plain">
+       
+    </script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
 </head>
 <body>
 	<div class="layui-fluid">
@@ -93,12 +102,13 @@
 									<input name="Img" id="Img" placeholder="封面地址" value=""
 										class="layui-input" />
 								</div>
-								<div class="layui-input-inline layui-btn-container"
-									style="width: auto;">
-									<button type="button" class="layui-btn layui-btn-primary"
-										id="LAY_ImgUpload">
-										<i class="layui-icon">&#xe67c;</i>上传图片
-									</button>
+						
+								<div class="layui-input-inline layui-btn-container" style="width: auto;">
+                                    <button type="button" class="layui-btn layui-btn-primary" id="LAY_ImgUpload">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>	
+									
+									
 									<button class="layui-btn layui-btn-primary" type="button"
 										layadmin-event="imgPreview">查看图片</button>
 								</div>
@@ -117,6 +127,8 @@
 										<i class="layui-icon">&#xe67c;</i>上传附件
 									</button>
 								</div>
+								
+								
 								<div class="layui-form-mid layui-word-aux">字段名：FileUrl</div>
 							</div>
 							<div class="layui-form-item">
@@ -136,6 +148,9 @@
 								</div>
 								<div class="layui-form-mid layui-word-aux">字段名：TempShow.指定文章单独模板，为空则继承分类中设置的详情模板</div>
 							</div>
+							
+						
+							
 							<div class="layui-form-item">
 								<label class="layui-form-label">文章详情</label>
 								<div class="layui-input-block">
@@ -144,6 +159,8 @@
 									<div class="layui-form-mid layui-word-aux">字段名：Body</div>
 								</div>
 							</div>
+							  <!-- 实例化编辑器 -->
+
 		<!-- 					<div class="layui-form-item layui-hide" id="bd1">
 								<label class="layui-form-label">文章详情1</label>
 								<div class="layui-input-block">
@@ -212,6 +229,7 @@
 						elem : '#CDate'
 					});
 				})
+
 	</script>
 </body>
 </html>

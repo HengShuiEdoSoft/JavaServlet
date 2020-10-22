@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.hsedo.onepiece.basecontroller.Edo_BaseController;
+
 import com.hsedo.onepiece.core.util.convert.String_Convert;
 import com.hsedo.onepiece.iservice.Edo_Adverts_iservice;
 import com.hsedo.onepiece.pojo.Edo_Adverts;
+import com.hsedo.onepiece.web.servlet.Edo_BaseFilter;
 
 
 /**
@@ -29,7 +29,7 @@ import com.hsedo.onepiece.pojo.Edo_Adverts;
  */
 @Controller
 @RequestMapping("/Ad")
-public class Edo_AdvertsController   {
+public class Edo_AdvertsController {
 	
 		private static Logger logger = Logger.getLogger(Edo_CommonController.class);
 

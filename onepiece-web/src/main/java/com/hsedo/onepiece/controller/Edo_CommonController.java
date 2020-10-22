@@ -85,7 +85,11 @@ public class Edo_CommonController {
 	}
 	
 	
+
 	
+	
+	
+	//edit 前查找
 	@RequestMapping(value = "/iDlistsql", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public Map StudentsList(@RequestParam("ID") String ID) {
